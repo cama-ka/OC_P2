@@ -1,18 +1,29 @@
+Scrapper Booktoscrap
 
-Cette application à été créée sur l'OS windows 10
+
+Ce programme récupère les informations de tous les livre du site https://book.toscrape.com
 
 
-1 - Installez python 3 selon votre OS : (https://www.python.org/downloads/)
-2 - Lancer un invite de commande administrateur
-3 - Saisir dans le terminal	:
+Pré-requis
+Téléchargez la dernière version de python 3
 
-	4-	>> cd C://repertoire_du_dossier
-	5-  >> python3 -m venv env       /////  création de l'environnement virtuel  /////  
-	6-	>> env\Scripts\activate       /////  activation de l'environnement virtuel  /////
-	7-	>> pip install -r requirements.txt       /////  installation des modules  /////
-	8-	>> python squelette_P2.py       /////  lancement de l'appication  /////
 
-9 - Les dossiers books/ et img/ sont créés
-10 - Dans le dossier books/ un fichier .csv sera créé par catégorie et contiendra les informations d'un livre par ligne.
-11 - Les images se téléchargeront dans le dossier img/ 
+Installation
+Créez un environnement virtuel dans un dossier vide de votre choix :
+    - Ouvre votre terminal de commande
+    - Allez dans le repertoire choisi
+    - Saisissez dans le terminal : python -m venv venvscrap
+    - Restez sur le terminal de commande pour la suite
+Installez les bibliothèques :
+    lancez le fichier requirements.txt qui va installer les bibliothèques suivantes :
+    - BeautifulSoup4
+    - requests
+
+Démarrage
+Doublez-cliquez sur le fichier python scrap.py
+Deux dossier vont être créés : 
+    - books/ contenant les fichiers .csv. Il en existe un par catégorie
+    - imgs/ contenant les images de chaque livre.
+
+
 
