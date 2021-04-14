@@ -65,7 +65,19 @@ def info_livre(url_du_livre, cat):
             price_including_tax = tds[3].text.replace(',', '').replace(';', '')
             price_excluding_tax = tds[2].text.replace(',', '').replace(';', '')
             number_available = tds[5].text.replace(',', '').replace(';', '')
-            review_rating = tds[6].text.replace(',', '').replace(';', '')
+            p = soup.find_all('p')
+            review = str(p[2])
+            review_rating = review[0:30]
+            if "One" in review_rating:
+                review_rating = "1"
+            elif "Two" in review_rating:
+                review_rating = "2"
+            elif "Three" in review_rating:
+                review_rating = "3"
+            elif "Four" in review_rating:
+                review_rating = "4"
+            elif "Five" in review_rating:
+                review_rating = "5"
             title = soup.find('div', {'class': 'col-sm-6 product_main'}).\
                 find('h1').text.replace(',', '').replace(';', '')
             product_description = soup.find('article', {'class': 'product_page'}).\
