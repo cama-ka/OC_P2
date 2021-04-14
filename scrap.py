@@ -87,9 +87,11 @@ def info_livre(url_du_livre, cat):
             image_url = soup.find('div', {'class': 'item active'}).find('img').\
                 attrs['src'].replace('../..', 'http://books.toscrape.com')
             image_download(image_url, universal_product_code)
+            path = "OC_P2\images"
+            image_path = os.path.join(path + "\\" + universal_product_code + ".jpg")
             file.write(url_du_livre + ';' + universal_product_code + ';' + title +\
                 ';' + price_including_tax + ';' + price_excluding_tax + ';' + number_available +\
-                ';' + product_description + ';' + category + ';' + review_rating + ';' + image_url + '\n')
+                ';' + product_description + ';' + category + ';' + review_rating + ';' + image_url + ';' + image_path + '\n')
 
 def image_download(image_url, product_code):
 # Uploading images of each book in the folder we created before.
@@ -116,7 +118,7 @@ def main():
                 with open('books/' + cat + '.csv', 'w', encoding='utf-8-sig') as file:
                     file.write('product_page_url;universal_product_code;title;price_including_tax;'
                     'price_excluding_tax;number_available;product_description;category;'
-                    'review_rating;image_url;\n')
+                    'review_rating;image_url;image_path;\n')
                 pagination(lien, cat)
                         
     
