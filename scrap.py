@@ -87,8 +87,11 @@ def info_livre(url_du_livre, cat):
             image_url = soup.find('div', {'class': 'item active'}).find('img').\
                 attrs['src'].replace('../..', 'http://books.toscrape.com')
             image_download(image_url, universal_product_code)
-            path = "OC_P2\images"
-            image_path = os.path.join(path + "\\" + universal_product_code + ".jpg")
+            path = "images/" + universal_product_code + ".jpg"
+            if os.path.exists:
+                image_path = path
+            else:
+                image_path = "doesn't exist"
             file.write(url_du_livre + ';' + universal_product_code + ';' + title +\
                 ';' + price_including_tax + ';' + price_excluding_tax + ';' + number_available +\
                 ';' + product_description + ';' + category + ';' + review_rating + ';' + image_url + ';' + image_path + '\n')
