@@ -1,7 +1,7 @@
 import os
 import requests
 from bs4 import BeautifulSoup
-
+import csv
 
 def creation_repertoires():
     # Creating folder
@@ -16,22 +16,19 @@ def creation_repertoires():
 def book_one(url_du_livre, cat):
     response = requests.get(url_du_livre)
     if response.ok:
-        print(url_du_livre)
         soup = BeautifulSoup(response.content, "lxml")
         tds = soup.find_all('td')
         universal_product_code = tds[0].text.replace(',', '').replace(';', '')
         price_including_tax = tds[3].text.replace(',', '').replace(';', '')
         price_excluding_tax = tds[2].text.replace(',', '').replace(';', '')
         number_available = tds[5].text.replace(',', '').replace(';', '')
-        
         dic = {"One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5}
         review_rating = soup.find('p', {'class': 'star-rating'})['class'][1]
         for clef in dic.keys(): 
             if clef == review_rating:
                 review_rating = str(dic[clef])
             else:
-                pass
-            
+                pass    
         title = soup.find('div', {'class': 'col-sm-6 product_main'}).\
             find('h1').text.replace(',', '').replace(';', '')
         product_description = soup.find('article', {'class': 'product_page'}).\
@@ -46,11 +43,14 @@ def book_one(url_du_livre, cat):
             image_path = path
         else : 
             image_path = "doesn't exist"
+        print('{} est en cours de téléchargement' .format(title))
 
         with open('books/' + cat + '.csv', 'a', encoding='utf-8-sig') as file:
-            file.write(url_du_livre + ';' + universal_product_code + ';' + title +\
-                ';' + price_including_tax + ';' + price_excluding_tax + ';' + number_available +\
-                ';' + product_description + ';' + category + ';' + review_rating + ';' + image_url + ';' + image_path +'\n')
+            csv_writer = csv.writer(file, delimiter=';')
+            file.write(f"{url_du_livre};{universal_product_code};"
+                       f"{title};{price_including_tax};{price_excluding_tax};"
+                       f"{number_available};{product_description};{category};"
+                       f"{review_rating};{image_url};{image_path}\n")
     
     
 def image_download(image_url, product_code):
@@ -66,6 +66,7 @@ def main(cat):
     creation_repertoires()
     
     with open('books/' + cat + '.csv', 'w', encoding='utf-8-sig') as file:
+        csv_writer = csv.writer(file, delimiter=';')
         file.write('product_page_url;universal_product_code;title;price_including_tax;'
         'price_excluding_tax;number_available;product_description;category;'
         'review_rating;image_url;image_path;\n')
