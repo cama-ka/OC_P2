@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import csv
 
 def creation_repertoires():
-    # Creating folder
+    """ creating directories """
     try:
         os.mkdir('books/')
         os.mkdir('images/')
@@ -14,8 +14,8 @@ def creation_repertoires():
         pass
 
 
-
 def book_one(url_du_livre, cat):
+    """ taking informations from each book """
     response = requests.get(url_du_livre)
     if response.ok:
         soup = BeautifulSoup(response.content, "lxml")
@@ -41,6 +41,7 @@ def book_one(url_du_livre, cat):
     
 
 def image_path_f(universal_product_code):
+    """ find the image relative path """
     path = "images/" + universal_product_code + ".jpg"
     if os.path.exists:
         image_path = path
@@ -51,6 +52,7 @@ def image_path_f(universal_product_code):
     
         
 def review_rating_f(url_du_livre):
+    """  take the review_rating for each book """
     response = requests.get(url_du_livre)
     if response.ok:
         soup = BeautifulSoup(response.content, "lxml")
@@ -64,8 +66,8 @@ def review_rating_f(url_du_livre):
             pass
             
         
-def on_y_vas(cat):
-    info = book_one("https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html", cat)
+def on_y_vas(cat, url_du_livre):
+    info = book_one(url_du_livre, cat)
     with open('books/' + cat + '.csv', 'a', encoding='utf-8-sig') as file:
         csv_writer = csv.writer(file, delimiter=';')
         file.write(info)
@@ -76,7 +78,7 @@ def image_download(image_url, product_code):
     response = requests.get(image_url)
     with open('images/' + product_code + '.jpg' , "wb") as file:
         file.write(response.content)
-    
+  
     
 def main(cat):
     """ The main function it's gonna find links for each categorys,\
@@ -90,7 +92,7 @@ def main(cat):
         'review_rating;image_url;image_path;\n')
         print(f"{cat} est en cours de téléchargement")
                                     
-    on_y_vas(cat)
+    on_y_vas(cat, "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html")
 
     
 if __name__ == "__main__":
