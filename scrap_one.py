@@ -35,7 +35,9 @@ def book_one(url_du_livre, cat):
             attrs['src'].replace('../..', 'http://books.toscrape.com')
         image_path = image_path_f(universal_product_code)
         image_download(image_url, universal_product_code)
-        infos = f"{url_du_livre};{universal_product_code};{title};{price_including_tax};{price_excluding_tax};{number_available};{product_description};{category};{review_rating};{image_url};{image_path}"
+        infos = f"{url_du_livre};{universal_product_code};{title};"\
+        f"{price_including_tax};{price_excluding_tax};{number_available};"\
+        f"{product_description};{category};{review_rating};{image_url};{image_path} \n"
                        
         return infos
     
@@ -66,18 +68,21 @@ def review_rating_f(url_du_livre):
             pass
             
         
-def on_y_vas(cat, url_du_livre):
+def ecriture_info(url_du_livre, cat):
+    """ taking information's book to write them in a csv file """
     info = book_one(url_du_livre, cat)
+    print(info)
     with open('books/' + cat + '.csv', 'a', encoding='utf-8-sig') as file:
         csv_writer = csv.writer(file, delimiter=';')
         file.write(info)
     
     
 def image_download(image_url, product_code):
-# Uploading images of each book in the folder we created before.
+    """ Upload images """
     response = requests.get(image_url)
     with open('images/' + product_code + '.jpg' , "wb") as file:
         file.write(response.content)
+        
   
     
 def main(cat):
@@ -87,12 +92,11 @@ def main(cat):
     
     with open('books/' + cat + '.csv', 'w', encoding='utf-8-sig') as file:
         csv_writer = csv.writer(file, delimiter=';')
-        file.write('product_page_url;universal_product_code;title;price_including_tax;'
-        'price_excluding_tax;number_available;product_description;category;'
-        'review_rating;image_url;image_path;\n')
+        file.write(f"product_page_url;universal_product_code;title;price_including_tax;"\
+                f"price_excluding_tax;number_available;product_description;category;"\
+                f"review_rating;image_url;image_path;\n")
         print(f"{cat} est en cours de téléchargement")
-                                    
-    on_y_vas(cat, "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html")
+    ecriture_info("https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html", cat)
 
     
 if __name__ == "__main__":
