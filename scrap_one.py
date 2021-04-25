@@ -3,11 +3,11 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-def creation_repertoires():
+def creation_repertoires(dossier):
     """ creating directories """
     try:
-        os.mkdir('books/')
-        os.mkdir('images/')
+        os.mkdir(dossier)
+        
     except OSError:
         pass
     else:
@@ -35,20 +35,21 @@ def book_one(url_du_livre, cat):
             attrs['src'].replace('../..', 'http://books.toscrape.com')
         image_path = image_path_f(universal_product_code)
         image_download(image_url, universal_product_code)
-        infos = f"{url_du_livre};{universal_product_code};{title};"\
-        f"{price_including_tax};{price_excluding_tax};{number_available};"\
-        f"{product_description};{category};{review_rating};{image_url};{image_path} \n"
-                       
+        infos = [url_du_livre,universal_product_code,title,\
+        price_including_tax,price_excluding_tax,number_available,\
+        product_description,category,review_rating,image_url,image_path]
         return infos
+    else:
+        print("The page cannot be find.")
     
 
 def image_path_f(universal_product_code):
     """ find the image relative path """
-    path = "images/" + universal_product_code + ".jpg"
+    path = f"images/{ universal_product_code }.jpg"
     if os.path.exists:
         image_path = path
     else : 
-        image_path = "doesn't exist"
+        image_path = f"Doesn't exist"
     
     return image_path
     
@@ -58,44 +59,44 @@ def review_rating_f(url_du_livre):
     response = requests.get(url_du_livre)
     if response.ok:
         soup = BeautifulSoup(response.content, "lxml")
-    dic = {"One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5}
+    else:
+        print("The page cannot be find.")
+    dic = {"One": "1", "Two": "2", "Three": "3", "Four": "4", "Five": "5"}
     review_rating = soup.find('p', {'class': 'star-rating'})['class'][1]
-    for clef in dic.keys(): 
-        if clef == review_rating:
-            review_rating = str(dic[clef])
-            return review_rating
-        else:
+    if review_rating in dic:
+        return dic[review_rating]
+    else:
             pass
             
         
 def ecriture_info(url_du_livre, cat):
     """ taking information's book to write them in a csv file """
     info = book_one(url_du_livre, cat)
-    print(info)
-    with open('books/' + cat + '.csv', 'a', encoding='utf-8-sig') as file:
-        csv_writer = csv.writer(file, delimiter=';')
-        file.write(info)
+    with open(f"books/ {cat} .csv", 'a', encoding='utf-8-sig', newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(info)
     
     
 def image_download(image_url, product_code):
     """ Upload images """
     response = requests.get(image_url)
-    with open('images/' + product_code + '.jpg' , "wb") as file:
+    with open(f"images/ {product_code} .jpg" , "wb") as file:
         file.write(response.content)
         
-  
     
 def main(cat):
-    """ The main function it's gonna find links for each categorys,\
-        creat csv files and activate the others function"""
-    creation_repertoires()
+    """ creat csv files and activate the others function """
+    creation_repertoires('books/')
+    creation_repertoires('images/')
     
-    with open('books/' + cat + '.csv', 'w', encoding='utf-8-sig') as file:
-        csv_writer = csv.writer(file, delimiter=';')
-        file.write(f"product_page_url;universal_product_code;title;price_including_tax;"\
-                f"price_excluding_tax;number_available;product_description;category;"\
-                f"review_rating;image_url;image_path;\n")
+    with open(f"books/ {cat} .csv", 'w', encoding='utf-8-sig', newline="") as csvfile:
+        fieldnames = ["product_page_url","universal_product_code","title","price_including_tax",\
+                "price_excluding_tax","number_available","product_description","category",\
+                "review_rating","image_url","image_path"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
         print(f"{cat} est en cours de téléchargement")
+        
     ecriture_info("https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html", cat)
 
     
