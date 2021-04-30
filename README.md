@@ -1,8 +1,8 @@
-# Scrapper https://books.toscrape.com/
+# Scrapper le site : https://books.toscrape.com/
 
-Pour utiliser cette application suivez la procédure ci-dessous.
+**Pour utiliser cette application suivez la procédure ci-dessous.**
 
-Cette procédure a été conçue pour l'OS Windows 10. Certaines commandes peuvent varier selon votre OS.
+*Cette procédure a été conçue pour l'OS Windows 10. Certaines commandes peuvent varier selon votre OS.*
 
 ## Pré-requis:
 Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/)https://www.python.org/downloads/
