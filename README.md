@@ -9,26 +9,35 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 
 ## Télécharger le programme via GitHub avec la commande ci-dessous ou en téléchargeant l'archive: 
 
-	* git clone https://github.com/cama-ka/OC_P2.git
+	git clone [https://github.com/cama-ka/OC_P2.git](https://github.com/cama-ka/OC_P2.git)
 
 1. Se rendre dans le répertoire du projet dans un terminal:
-	* cd "répertoire/du/projet"
+	- cd "répertoire/du/projet"
 2. Créer l'environnement virtuel:
-	* python3 -m venv env
+	- python3 -m venv env
 3. Activer l'environnement virtuel:
-	* env\Scripts\Activate.bat
+	- env\Scripts\Activate.bat
 4. Installer les modules via la commande:
-	* pip install -r requirements.txt
+	- pip install -r requirements.txt
 
-## Lancer le programme:
-* python app.py
 
-### Informations
-- Chaque catégorie correspond à un fichier .CSV et se trouve dans le répertoire /books/
+## Pour lancer le programme traitant d'un seul livre :
+* python scrap_one.py
+
+#### Informations scrap_one
+- Les informations du livre seront contenues dans un fichier .CSV et se trouve dans le répertoire /books/.
+- L'image du livre sera télécharger dans le répertoir /images/.
+
+## Pour lancer le programme traitant tous les livres du site :
+* python scrap.py
+
+### Informations scrap.py
+
+- Chaque catégorie correspond à un fichier .CSV et se trouve dans le répertoire /books/.
 
 - Chaque ligne dans le fichier .CSV correspond à un livre (sauf l'entête).
 
-- Toutes les images sont enregistrées dans le répertoire: /images/
+- Toutes les images sont enregistrées dans le répertoire: /images/.
 
 - Le séparateur utilisé dans le fichier .CSV est le point-virgule (;).
 
