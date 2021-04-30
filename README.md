@@ -1,4 +1,4 @@
-# Scrapper Bookscrap
+# Scrapper https://books.toscrape.com/
 
 Pour utiliser cette application suivez la procédure ci-dessous.
 
@@ -27,14 +27,14 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 ## Pour lancer le programme traitant d'un seul livre :
 * python scrap_one.py
 
-#### Informations scrap_one
+#### Informations scrap_one.py
 - Les informations du livre seront contenues dans un fichier .CSV et se trouve dans le répertoire /books/.
 - L'image du livre sera télécharger dans le répertoir /images/.
 
 ## Pour lancer le programme traitant tous les livres du site :
 * python scrap.py
 
-### Informations scrap.py
+#### Informations scrap.py
 - Le script scrap.py est lié au script scrap_one.py
 
 - Chaque catégorie correspond à un fichier .CSV et se trouve dans le répertoire /books/.
