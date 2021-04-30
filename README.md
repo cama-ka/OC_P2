@@ -4,10 +4,10 @@
 
 *Cette procédure a été conçue pour l'OS Windows 10. Certaines commandes peuvent varier selon votre OS.*
 
-## Pré-requis:
+### Pré-requis:
 Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/)https://www.python.org/downloads/
 
-## Télécharger le programme via GitHub avec la commande ci-dessous ou en téléchargeant l'archive: 
+#### Télécharger le programme via GitHub avec la commande ci-dessous ou en téléchargeant l'archive: 
 
 	git clone [https://github.com/cama-ka/OC_P2.git](https://github.com/cama-ka/OC_P2.git)
 
@@ -27,14 +27,14 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 ## Pour lancer le programme traitant d'un seul livre :
 * python scrap_one.py
 
-#### Informations scrap_one.py
+##### Informations scrap_one.py
 - Les informations du livre seront contenues dans un fichier .CSV et se trouve dans le répertoire /books/.
 - L'image du livre sera télécharger dans le répertoir /images/.
 
-## Pour lancer le programme traitant tous les livres du site :
+#### Pour lancer le programme traitant tous les livres du site :
 * python scrap.py
 
-#### Informations scrap.py
+##### Informations scrap.py
 - Le script scrap.py est lié au script scrap_one.py
 
 - Chaque catégorie correspond à un fichier .CSV et se trouve dans le répertoire /books/.
