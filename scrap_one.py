@@ -85,7 +85,7 @@ def image_download(image_url, product_code):
         
     
 def main(cat):
-    """ creat csv files and activate the others function """
+    """ create csv files and activate the others function """
     creation_repertoires('books/')
     creation_repertoires('images/')
     
