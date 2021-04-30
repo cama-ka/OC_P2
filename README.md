@@ -13,10 +13,13 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 
 1. Se rendre dans le répertoire du projet dans un terminal:
 	- cd "répertoire/du/projet"
+
 2. Créer l'environnement virtuel:
 	- python3 -m venv env
+
 3. Activer l'environnement virtuel:
 	- env\Scripts\Activate.bat
+
 4. Installer les modules via la commande:
 	- pip install -r requirements.txt
 
@@ -32,6 +35,7 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 * python scrap.py
 
 ### Informations scrap.py
+- Le script scrap.py est lié au script scrap_one.py
 
 - Chaque catégorie correspond à un fichier .CSV et se trouve dans le répertoire /books/.
 
