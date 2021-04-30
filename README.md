@@ -1,25 +1,26 @@
-#Scrapper Bookscrap
+# Scrapper Bookscrap
 
 Pour utiliser cette application suivez la procédure ci-dessous.
 
 Cette procédure a été conçue pour l'OS Windows 10. Certaines commandes peuvent varier selon votre OS.
 
-Pré-requis:
+## Pré-requis:
 Installez Python 3 : https://www.python.org/downloads/
 
-Télécharger le programme via GitHub avec la commande ci-dessous ou en téléchargeant l'archive.
+## Télécharger le programme via GitHub avec la commande ci-dessous ou en téléchargeant l'archive: 
 
+	* git clone https://github.com/cama-ka/OC_P2.git
 
-git clone https://github.com/cama-ka/OC_P2.git
-Se rendre dans le répertoire du projet dans un terminal:
-cd "répertoire/du/projet"
-Créer l'environnement virtuel:
-python3 -m venv env
-Activer l'environnement virtuel:
-env\Scripts\Activate.bat
-installer les modules via la commande:
-pip install -r requirements.txt
-Lancer le programme:
+* Se rendre dans le répertoire du projet dans un terminal:
+	* cd "répertoire/du/projet"
+* Créer l'environnement virtuel:
+	* python3 -m venv env
+* Activer l'environnement virtuel:
+	* env\Scripts\Activate.bat
+* Installer les modules via la commande:
+	* pip install -r requirements.txt
+
+## Lancer le programme:
 python app.py
 
 Informations
