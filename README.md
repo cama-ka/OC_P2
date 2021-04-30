@@ -1,4 +1,4 @@
-# Scrapper le site : https://books.toscrape.com/
+# Scrapper les informations du site book.toscrape.
 
 **Pour utiliser cette application suivez la procédure ci-dessous.**
 
