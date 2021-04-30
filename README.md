@@ -9,7 +9,7 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 
 #### Télécharger le programme via GitHub avec la commande ci-dessous ou en téléchargeant l'archive: 
 
-	git clone [https://github.com/cama-ka/OC_P2.git](https://github.com/cama-ka/OC_P2.git)
+	git clone https://github.com/cama-ka/OC_P2.git
 
 1. Se rendre dans le répertoire du projet dans un terminal:
 	- cd "répertoire/du/projet"
@@ -43,7 +43,7 @@ Installez Python 3 : [https://www.python.org/downloads/](https://wprock.fr/blog/
 
 - Toutes les images sont enregistrées dans le répertoire: /images/.
 
-- Le séparateur utilisé dans le fichier .CSV est le point-virgule (;).
+- Le séparateur utilisé dans le fichier .CSV est la virgule (,).
 
 - Les répertoires (/books/ et /images/) et les fichiers .CSV sont créés automatiquement au lancement du programme.
 
